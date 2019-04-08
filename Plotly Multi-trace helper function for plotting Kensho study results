@@ -1,0 +1,229 @@
+
+This function makes it easier to plot multiple traces onto a single figure so that you can hide and show them as you please by click on them. The reason I wrote this function is because I needed a quick way to plot the results that have been exported from a Kensho study when I've run the same study analyzing different position holding periods.
+
+The idea is to be able to compare similar study metrics across multiple holding periods to determine which ones may be optimal. This attempts to measure the different rates by which information is priced into an asset to determine various important factors related to achieving true alpha.
+
+
+
+def multi_scatter_p1(p1,p2,p3,p4,p5,p6,p7,p8,p9,metric_x,metric_y,data_pf,chart_title):
+    
+    p1 = p1
+    p2 = p2
+    p3 = p3
+    p4 = p4
+    p5 = p5
+    p6 = p6
+    p7 = p7
+    p8 = p8
+    p9 = p9
+    
+    metric_x = metric_x
+    metric_y = metric_y
+    
+    data_pf = data_pf
+    trace0 = go.Scatter(
+        x=data_pf.loc[p1,:,metric_x],
+        y=data_pf.loc[p1,:,metric_y],
+        #text=[ED_Sorted1['Company Name'],
+        name='{} days'.format(p1),
+        mode = 'markers',
+        text = data_pf.loc[p1,:,'Name'],
+        marker=dict(
+            #color='rgb(215,25,28)',
+            #line=dict(
+            #    color='black',
+            #    width=0.5,
+            #)
+        ),
+        opacity=1.0
+    )
+    
+    trace1 = go.Scatter(
+        x=data_pf.loc[p2,:,metric_x],
+        y=data_pf.loc[p2,:,metric_y],
+        #text=[ED_Sorted1['Company Name']],
+        name='{} days'.format(p2),
+        mode='markers',
+        text = data_pf.loc[p2,:,'Name'],
+        marker=dict(
+            #color='rgb(252,141,89)',
+            #line=dict(
+            #    color='black',
+            #    width=0.5,
+            #)
+        ),
+        opacity=1.0
+    )
+    trace2 = go.Scatter(
+        x=data_pf.loc[p3,:,metric_x],
+        y=data_pf.loc[p3,:,metric_y],
+        #text=[ED_Sorted1['Company Name'],
+        name='{} days'.format(p3),
+        mode = 'markers',
+        text = data_pf.loc[p3,:,'Name'],
+        marker=dict(
+            #color='rgb(224,243,248)',
+            #line=dict(
+            #    color='black',
+            #    width=0.5,
+            #)
+        ),
+        opacity=1.0
+    )
+    trace3 = go.Scatter(
+        x=data_pf.loc[p4,:,metric_x],
+        y=data_pf.loc[p4,:,metric_y],
+        #text=[ED_Sorted1['Company Name']],
+        name= '{} days'.format(p4),
+        mode = 'markers',
+        text = data_pf.loc[p4,:,'Name'],
+        marker=dict(
+            #color='rgb(145,191,219)',
+            #line=dict(
+            #    color='black',
+            #    width=0.5,
+            #)
+        ),
+        opacity=1.0,
+    )
+    trace4 = go.Scatter(
+        x=data_pf.loc[p5,:,metric_x],
+        y=data_pf.loc[p5,:,metric_y],
+        #text=[ED_Sorted1['Company Name']],
+        name= '{} days'.format(p5),
+        mode = 'markers',
+        text = data_pf.loc[p5,:,'Name'],
+        marker=dict(
+            #color='rgb(145,191,219)',
+            #line=dict(
+            #    color='black',
+            #    width=0.5,
+            #)
+        ),
+        opacity=1.0,
+    )
+    trace5 = go.Scatter(
+        x=data_pf.loc[p6,:,metric_x],
+        y=data_pf.loc[p6,:,metric_y],
+        #text=[ED_Sorted1['Company Name']],
+        name= '{} days'.format(p6),
+        mode = 'markers',
+        text = data_pf.loc[p6,:,'Name'],
+        marker=dict(
+            #color='rgb(145,191,219)',
+            #line=dict(
+            #    color='black',
+            #    width=0.5,
+            #)
+        ),
+        opacity=1.0,
+    )
+    trace6 = go.Scatter(
+        x=data_pf.loc[p7,:,metric_x],
+        y=data_pf.loc[p7,:,metric_y],
+        #text=[ED_Sorted1['Company Name']],
+        name= '{} days'.format(p7),
+        mode = 'markers',
+        text = data_pf.loc[p7,:,'Name'],
+        marker=dict(
+            #color='rgb(145,191,219)',
+            #line=dict(
+            #    color='black',
+            #    width=0.5,
+            #)
+        ),
+        opacity=1.0,
+    )
+    trace7 = go.Scatter(
+        x=data_pf.loc[p8,:,metric_x],
+        y=data_pf.loc[p8,:,metric_y],
+        #text=[ED_Sorted1['Company Name']],
+        name= '{} days'.format(p8),
+        mode = 'markers',
+        text = data_pf.loc[p8,:,'Name'],
+        marker=dict(
+            #color='rgb(145,191,219)',
+            #line=dict(
+            #    color='black',
+            #    width=0.5,
+            #)
+        ),
+        opacity=1.0,
+    )
+    trace8 = go.Scatter(
+        x=data_pf.loc[p9,:,metric_x],
+        y=data_pf.loc[p9,:,metric_y],
+        #text=[ED_Sorted1['Company Name']],
+        name= '{} days'.format(p9),
+        mode = 'markers',
+        text = data_pf.loc[p9,:,'Name'],
+        marker=dict(
+            #color='rgb(145,191,219)',
+            #line=dict(
+            #    color='black',
+            #    width=0.5,
+            #)
+        ),
+        opacity=1.0,
+    )
+    data = [trace0,trace1,trace2,trace3,trace4,trace5,trace6,trace7,trace8]
+    layout = go.Layout(
+        title=str(chart_title),
+        barmode='group',
+        autosize=True,
+        #width=1000,
+        #height=800,
+        margin=go.Margin(
+            autoexpand=True,
+            b=100
+        ),
+        xaxis=dict(
+            title=str(metric_x),
+            titlefont=dict(
+                family='Arial',
+                size=12,
+                color='black'
+            ),
+            tickangle=-45,
+            autorange=True,
+            showgrid=False,
+            mirror=False,
+            zeroline=False,
+            showline=True,
+            autotick=True,
+            ticks='',
+            showticklabels=True,
+            tickfont=dict(
+                family= 'Arial',
+                size=12,
+                color='black'
+            ),
+            exponentformat='e',
+            showexponent='All'
+        ),
+        yaxis=dict(
+            title=str(metric_y),
+            titlefont=dict(
+                family='Arial',
+                size=12,
+                color='black'
+            ),
+            autorange=True,
+            showgrid=False,
+            mirror=False,
+            zeroline=False,
+            showline=True,
+            autotick=True,
+            ticks='',
+            showticklabels=True,
+            tickfont=dict(
+                family='Arial',
+                size=12,
+                color='black'
+            ),
+            exponentformat='e',
+            showexponent='All'
+        )    
+    )
+    fig = go.Figure(data=data, layout=layout)
+    return py.iplot(fig)
